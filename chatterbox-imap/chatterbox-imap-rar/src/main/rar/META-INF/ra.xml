@@ -44,12 +44,12 @@
         <config-property>
             <config-property-name>username</config-property-name>
             <config-property-type>java.lang.String</config-property-type>
-            <config-property-value>tiko.mtengezo@gmail.com</config-property-value>
+            <config-property-value>xxxxxxxxx@gmail.com</config-property-value>
         </config-property>
         <config-property>
             <config-property-name>password</config-property-name>
             <config-property-type>java.lang.String</config-property-type>
-            <config-property-value>uzexrdzvalvhmjta</config-property-value>
+            <config-property-value>yyyyyyyyyyyyyyyy</config-property-value>
         </config-property>
         <config-property>
             <config-property-name>protocol</config-property-name>
