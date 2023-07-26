@@ -42,9 +42,11 @@ public class ImapCheckThread extends Thread {
         this.resourceAdapter = resourceAdapter;
         final Properties properties = System.getProperties();
         session = Session.getDefaultInstance(properties, null);
+        
         try {
             // Test the connection
             connect(session, resourceAdapter);
+            LOGGER.log(Level.INFO, "Connection for  " + resourceAdapter + properties + "  was successful...");
         } catch (AuthenticationFailedException e) {
             if ("imap.gmail.com".equals(resourceAdapter.getHost())) {
                 LOGGER.log(Level.SEVERE, "Failed to Connect " + resourceAdapter + "  Ensure 'access to less secure apps' is turned on in your gmail account", e);
@@ -77,7 +79,7 @@ public class ImapCheckThread extends Thread {
                     try {
                         store.close();
                     } catch (Exception e) {
-                        LOGGER.log(Level.WARNING, "Unable to close store" , e);
+                        LOGGER.log(Level.WARNING, "Unable to close store", e);
                     }
                 }
             }

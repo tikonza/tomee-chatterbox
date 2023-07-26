@@ -53,19 +53,22 @@
       <groupId>org.apache.tomee</groupId>
       <artifactId>openejb-core</artifactId>
       <version>${version.openejb}</version>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.twitter</groupId>
       <artifactId>hbc-core</artifactId>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.twitter</groupId>
       <artifactId>hbc-twitter4j</artifactId>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.tomitribe</groupId>
       <artifactId>tomitribe-util</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>

@@ -31,12 +31,29 @@
   <artifactId>chatterbox-imap-rar</artifactId>
   <packaging>rar</packaging>
   <name>Chatterbox :: IMAP :: Resource Adapter</name>
-
-  <dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>chatterbox-imap-impl</artifactId>
       <version>${project.version}</version>
     </dependency>
+            <dependency>
+            <groupId>org.tomitribe</groupId>
+            <artifactId>tomitribe-util</artifactId>
+            <scope>provided</scope>
+        </dependency>
   </dependencies>
 </project>

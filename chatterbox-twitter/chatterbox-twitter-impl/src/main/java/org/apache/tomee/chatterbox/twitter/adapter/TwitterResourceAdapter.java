@@ -223,6 +223,7 @@ public class TwitterResourceAdapter implements ResourceAdapter, StatusChangeList
         return null;
     }
 
+    @Override
     public void start(final BootstrapContext bootstrapContext) throws ResourceAdapterInternalException {
 
         LOGGER.info("Starting " + this);
@@ -240,11 +241,13 @@ public class TwitterResourceAdapter implements ResourceAdapter, StatusChangeList
         }
     }
 
+    @Override
     public void stop() {
         LOGGER.info("Stopping " + this);
         client.stop();
     }
 
+    @Override
     public void endpointActivation(final MessageEndpointFactory messageEndpointFactory, final ActivationSpec activationSpec)
             throws ResourceException {
         final TwitterActivationSpec twitterActivationSpec = (TwitterActivationSpec) activationSpec;
@@ -260,6 +263,7 @@ public class TwitterResourceAdapter implements ResourceAdapter, StatusChangeList
 
     }
 
+    @Override
     public void endpointDeactivation(final MessageEndpointFactory messageEndpointFactory, final ActivationSpec activationSpec) {
         final TwitterActivationSpec twitterActivationSpec = (TwitterActivationSpec) activationSpec;
 

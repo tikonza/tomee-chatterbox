@@ -73,7 +73,6 @@ public class ImapResourceAdapter implements ResourceAdapter {
     private static final Logger LOGGER = Logger.getLogger(ImapResourceAdapter.class.getName());
 
     final Map<ImapActivationSpec, EndpointTarget> targets = new ConcurrentHashMap<>();
-
     private ImapCheckThread worker;
 
     @ConfigProperty
@@ -230,20 +229,24 @@ public class ImapResourceAdapter implements ResourceAdapter {
         return "";
     }
 
+    @Override
     public void start(BootstrapContext bootstrapContext) throws ResourceAdapterInternalException {
-        level = Level.parse(deliveryLogLevel);
+        level = Level.parse("FINE");
         LOGGER.info("Starting " + this);
         worker = new ImapCheckThread(this);
         worker.start();
     }
 
+    @Override
     public void stop() {
         LOGGER.info("Stopping " + this);
         worker.cancel();
     }
 
+    @Override
     public void endpointActivation(final MessageEndpointFactory messageEndpointFactory, final ActivationSpec activationSpec)
             throws ResourceException {
+        LOGGER.info("endpointActivation started...");
         final ImapActivationSpec imapActivationSpec = (ImapActivationSpec) activationSpec;
         final MessageEndpoint messageEndpoint = messageEndpointFactory.createEndpoint(null);
 
@@ -251,10 +254,13 @@ public class ImapResourceAdapter implements ResourceAdapter {
                 .getBeanClass() : messageEndpointFactory.getEndpointClass();
 
         final EndpointTarget target = new EndpointTarget(messageEndpoint, endpointClass);
+        
         targets.put(imapActivationSpec, target);
+        LOGGER.info("endpointActivation ended...");
 
     }
 
+    @Override
     public void endpointDeactivation(final MessageEndpointFactory messageEndpointFactory, final ActivationSpec activationSpec) {
         final ImapActivationSpec imapActivationSpec = (ImapActivationSpec) activationSpec;
 
@@ -266,6 +272,7 @@ public class ImapResourceAdapter implements ResourceAdapter {
         endpointTarget.messageEndpoint.release();
     }
 
+    @Override
     public XAResource[] getXAResources(ActivationSpec[] activationSpecs) throws ResourceException {
         return new XAResource[0];
     }
@@ -391,7 +398,7 @@ public class ImapResourceAdapter implements ResourceAdapter {
                             .filter(m -> filterMessage(message, m))
                             .collect(Collectors.toList());
 
-            if (matchingMethods == null || matchingMethods.size() == 0) {
+            if (matchingMethods == null || matchingMethods.isEmpty()) {
                 LOGGER.log(Level.INFO, "No method to match " + email);
                 return;
             }

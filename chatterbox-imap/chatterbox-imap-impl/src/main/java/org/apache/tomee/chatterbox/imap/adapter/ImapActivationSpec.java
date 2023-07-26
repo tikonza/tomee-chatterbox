@@ -16,15 +16,14 @@
  */
 package org.apache.tomee.chatterbox.imap.adapter;
 
-import org.apache.tomee.chatterbox.imap.api.MailListener;
-
 import javax.resource.ResourceException;
 import javax.resource.spi.Activation;
 import javax.resource.spi.ActivationSpec;
 import javax.resource.spi.InvalidPropertyException;
 import javax.resource.spi.ResourceAdapter;
+import org.apache.tomee.chatterbox.imap.api.MailListener;
 
-@Activation(messageListeners = MailListener.class)
+@Activation(messageListeners = {MailListener.class})
 public class ImapActivationSpec implements ActivationSpec {
 
     private ResourceAdapter resourceAdapter;

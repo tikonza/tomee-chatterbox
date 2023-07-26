@@ -33,23 +33,23 @@
     <resourceadapter-class>org.apache.tomee.chatterbox.twitter.adapter.TwitterResourceAdapter</resourceadapter-class>
     <config-property>
       <config-property-name>consumerKey</config-property-name>
-      <config-property-type>String</config-property-type>
-      <config-property-value></config-property-value>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value>22222consumerkey</config-property-value>
     </config-property>
     <config-property>
       <config-property-name>consumerSecret</config-property-name>
-      <config-property-type>String</config-property-type>
-      <config-property-value></config-property-value>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value>22222consumerSecret</config-property-value>
     </config-property>
     <config-property>
       <config-property-name>accessToken</config-property-name>
-      <config-property-type>String</config-property-type>
-      <config-property-value></config-property-value>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value>22222accessToken</config-property-value>
     </config-property>
     <config-property>
       <config-property-name>accessTokenSecret</config-property-name>
-      <config-property-type>String</config-property-type>
-      <config-property-value></config-property-value>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value>22222accessTokenSecret</config-property-value>
     </config-property>
     <outbound-resourceadapter>
       <connection-definition>

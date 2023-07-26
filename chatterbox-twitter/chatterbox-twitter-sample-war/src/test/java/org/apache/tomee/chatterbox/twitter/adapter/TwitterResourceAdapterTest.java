@@ -23,7 +23,7 @@ import org.apache.tomee.chatterbox.twitter.api.User;
 import org.apache.tomee.chatterbox.twitter.api.UserParam;
 import org.junit.Assert;
 import org.junit.Test;
-import org.superbiz.FavoriteHashTags;
+//import org.superbiz.FavoriteHashTags;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.endpoint.MessageEndpoint;
@@ -98,7 +98,7 @@ public class TwitterResourceAdapterTest {
     @InvokeAllMatches
     private static class TweetBean {
 
-        private final static Logger LOGGER = Logger.getLogger(FavoriteHashTags.class.getName());
+        private final static Logger LOGGER = Logger.getLogger(TwitterResourceAdapterTest.class.getName());
 
         @Tweet(".*#TomEE.*")
         public void tomeeStatus(@TweetParam final String status, @UserParam final String user) {

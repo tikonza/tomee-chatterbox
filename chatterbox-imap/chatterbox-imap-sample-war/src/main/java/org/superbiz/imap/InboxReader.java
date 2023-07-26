@@ -25,11 +25,22 @@ import org.apache.tomee.chatterbox.imap.api.SubjectParam;
 import javax.ejb.MessageDriven;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.ActivationConfigProperty;
+import org.jboss.ejb3.annotation.ResourceAdapter;
 
-@MessageDriven
+@MessageDriven(name = "InboxReader", activationConfig = {
+    @ActivationConfigProperty(propertyName = "resourceAdapter", propertyValue = "chatterbox-imap-rar-0.3-SNAPSHOT"),
+    @ActivationConfigProperty(propertyName = "Subject", propertyValue = ".*test.")
+})
+//@MessageDriven(activationConfig={@ActivationConfigProperty(propertyName="resourceAdapterJndiName",propertyValue="eis/FileAdapter")})
+//@ResourceAdapter(value="chatterbox-imap-rar-0.3-SNAPSHOT")
 public class InboxReader implements MailListener {
 
     private static final Logger LOGGER = Logger.getLogger(InboxReader.class.getName());
+
+    public InboxReader() {
+        System.out.println("Starting ...");
+    }
 
     @Subject(".*test.*")
     public void logMessage(@FromParam final String from, @SubjectParam final String subject, @BodyParam final String message) {
